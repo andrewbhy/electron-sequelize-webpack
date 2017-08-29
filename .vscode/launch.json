@@ -1,0 +1,52 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+    
+        {
+            "name": "Debug Main Process",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            
+            "preLaunchTask": "compile",
+
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+            "windows": {
+              "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
+            },
+            "program": "${workspaceRoot}/build/main-electron.js",
+            "outFiles": [
+                "${workspaceRoot}/build/main-electron.js"
+            ],
+            "protocol": "legacy"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Run Tests",
+            "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
+            "args": [
+                "--runInBand"
+            ],
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "stopOnEntry": false,
+            "cwd": "${workspaceRoot}",
+            "sourceMaps": true,
+            "console": "internalConsole"
+        },
+        {
+            "name": "Attach",
+            "type": "node",
+            "request": "attach",
+            "port": 5858,
+            "address": "localhost",
+            "restart": false,
+            "sourceMaps": false,
+            "outDir": null,
+            "localRoot": "${workspaceRoot}/",
+            "remoteRoot": "/app/"
+        }
+    ]
+}
