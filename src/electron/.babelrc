@@ -2,6 +2,9 @@
     "ignore": [
         "node_modules/**/*"
     ],
+    "sourceMaps": "inline",
+    "retainLines": true,
+
     "presets": [
         "es2015",
         "stage-0",

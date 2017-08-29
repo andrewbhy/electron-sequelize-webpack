@@ -78,10 +78,7 @@ module.exports = {
         .relative(paths.appSrc, info.absoluteResourcePath)
         .replace(/\\/g, '/'),
   },
-  external : {
-    sequelize : true,
-    tedious : true
-  }
+
   target : 'electron-renderer', //2017.08.09 AndrewY
   node : {
     //2017.08.09 AndrewY - fix problem with file path resolution for the bundle

@@ -262,10 +262,5 @@ module.exports = {
   // cumbersome.
   performance: {
     hints: false,
-  },
-
-  external : {
-    sequelize : true,
-    tedious : true
   }
 };

@@ -14,10 +14,11 @@
             "windows": {
               "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
             },
-            "program": "${workspaceRoot}/build/main-electron.js",
+            "program": "${workspaceRoot}/build/main.js",
             "outFiles": [
-                "${workspaceRoot}/build/main-electron.js"
+                "${workspaceRoot}/build/**.js"
             ],
+            "sourceMaps": true,
             "protocol": "legacy"
         },
         {
