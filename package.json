@@ -1,5 +1,5 @@
 {
-  "name": "electron-app",
+  "name": "electron-sequelize-webpack",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
