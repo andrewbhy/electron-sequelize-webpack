@@ -1,20 +1,16 @@
-# CRA Redux, React Router & Redux Thunk
+# What is this for?
 
-* Tutorial: [Getting started with create-react-app, Redux, React Router & Redux Thunk](https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f)
-* Example: [View on Heroku](https://cra-redux-router-thunk.herokuapp.com/)
+I needed to build an electron app using localdb ( microsoft sql server ), so that I can use Microsoft SyncFramework to synchronize the data with the main server.
 
-# flow & flow-typed
-
-- install flow-typed globally to generate flow-type definition for node_modules that we include
-- > flow-type install to generate stubs, so that flow doesn't complain about missing module definitions
+There were some challenges getting things to work together, so I created a repo to "document" my findings and work so that I may revisit them in the future.
 
 
 # Webpack + Electron + Sequelize + LocalDB = uggggh!!
 
-There are a number of players that complicates this setup
+There are a number of issues that complicates this setup
 
 
-## 1. Namedpipe ( msnodesqlv8 )
+## 1. Namedpipe Connection ( msnodesqlv8 )
 
 LocalDB can only be referenced by thier name, and a lot of the MSSQL adpaters for node doesn't know how to deal with namedpipes.
 
@@ -35,23 +31,27 @@ There are 2 things we can do :
 
 1. Add these modules to external ( ignore list )
 
-which can be solved by adding these moduels to "externals" so that webpack doesn't try to process them.
+    which can be solved by adding these moduels to "externals" so that webpack doesn't try to process them.
 
-add these to webpack.config ( V2 )
-```
-    externals:  {
-        'pg' : true,
-        'pg-hstore' :true,
-        'sqlite3' : true,
-        'mysql2' : true
-    },
-```
+    add these to webpack.config ( V2 )
+    ```
+        externals:  {
+            'pg' : true,
+            'pg-hstore' :true,
+            'sqlite3' : true,
+            'mysql2' : true
+        },
+    ```
 
-2. Install the missing module
+2. Install the missing module, Tedious
 
-The Tedious module cannot be omitted and had to be downloaded.
+    If I remeber correctly, tedious was not required when using other dialects when I was not bundling with webpack.
 
-We will see if we can remove the dependency at a later time.
+    However, it seems that it cannot be omitted and had to be downloaded anymore.
+
+    I could study sequelize module and figure out what is going on in the background....
+
+    
 
 
 ## 3. Electron + mssqlnodev8
