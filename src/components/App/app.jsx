@@ -5,15 +5,22 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 
+import * as DBTestActions from '../../actions/databaseTest'
 
 
 class App extends Component {
 
-    mapData : any;
+
 
     componentDidMount() {
 
-       
+        const {actions } = this.props
+
+        if ( this.props.dispatch ){
+  
+            //actions.testDBConnection( this.props.dispatch );
+        }
+
     }
 
     componentWillUpdate(){
@@ -34,8 +41,19 @@ class App extends Component {
 
         );
     }
+
+
+
+
 }
 
+let mapDispatchToProps = (dispatch : Function )=>{
+   
+    return {
+        dispatch ,
+        actions : bindActionCreators( DBTestActions, dispatch )
+    }
+}
 
+export default connect(null, mapDispatchToProps)(App)
 
-export default App;

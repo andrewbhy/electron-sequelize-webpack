@@ -79,7 +79,9 @@
     "start-debug": "yarn run build-electron & electron build\\main-electron.js",
     "build": "node scripts/build.js",
     "build-electron": "webpack --config config\\webpack.config.prod.electron.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "build-msnodesqlv8": ".\\scripts\\build-msnodesql.bat x64",
+    "test": "node scripts/test.js --env=jsdom",
+    "postinstall": "npm run build-msnodesqlv8"
   },
   "jest": {
     "collectCoverageFrom": [

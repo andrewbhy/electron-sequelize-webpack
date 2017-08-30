@@ -15,7 +15,8 @@ FOR /F "delims=" %%j IN ('node_modules\.bin\electron.cmd --version') DO set elec
 echo "node version : %node_ver%"
 echo "electron version : %electron_ver%"
 
-
+echo "set npm conifg msvs_version to 2015"
+REM call npm set config msvs_version=2015
 
 for /F %%I in ("%~dp0..\node_modules") do set "NodeModules=%%~fI"
 echo Path to project node moduels: "%NodeModules%"

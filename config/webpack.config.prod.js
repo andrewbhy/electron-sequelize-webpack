@@ -44,7 +44,7 @@ const cssFilename = 'static/css/[name].[contenthash:8].css';
 // To have this structure working with relative paths, we have to use custom options.
 const extractTextPluginOptions = shouldUseRelativeAssetPaths
   ? // Making sure that the publicPath goes back to to build folder.
-    { publicPath: Array(cssFilename.split('/').length).join('../') }
+  { publicPath: Array(cssFilename.split('/').length).join('../') }
   : {};
 
 // This is the production configuration.
@@ -70,7 +70,7 @@ module.exports = {
     //publicPath: publicPath,
     // 2017.08.09 AndrewY - this causes relative path when referencing the bundles /stat/... 
     //                      electron needs relative path when in production mode
-    publicPath : "",
+    publicPath: "",
 
     // Point sourcemap entries to original disk location (format as URL on Windows)
     devtoolModuleFilenameTemplate: info =>
@@ -79,11 +79,18 @@ module.exports = {
         .replace(/\\/g, '/'),
   },
 
-  target : 'electron-renderer', //2017.08.09 AndrewY
-  node : {
+  target: 'electron-renderer', //2017.08.09 AndrewY
+  node: {
     //2017.08.09 AndrewY - fix problem with file path resolution for the bundle
-    __dirname : false,
-    __filename : false
+    __dirname: false,
+    __filename: false
+  },
+  externals: {
+
+    'pg': true,
+    'pg-hstore': true,
+    'sqlite3': true,
+    'mysql2': true
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
@@ -102,7 +109,7 @@ module.exports = {
     // for React Native Web.
     extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
-      
+
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -132,7 +139,7 @@ module.exports = {
           {
             options: {
               formatter: eslintFormatter,
-              
+
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -179,7 +186,7 @@ module.exports = {
         include: paths.appSrc,
         loader: require.resolve('babel-loader'),
         options: {
-          
+
           compact: true,
         },
       },
