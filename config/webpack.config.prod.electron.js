@@ -3,7 +3,7 @@ var webpack = require('webpack')
 var ExternalsPlugin = require('webpack2-externals-plugin');
 
 
-
+// to-do : these output are not working as intended. Need to fix them
 let output_dev = {
     path: path.resolve(__dirname, '../build'),
     publicPath: './public/',
@@ -54,7 +54,7 @@ module.exports = {
                     name: '[name].[ext]?[hash]'
                 }
             },
-            //allow binary files 
+            //unsure if this is needed any longer
             {
                 test: /\.node$/,
                 use: 'node-loader'
