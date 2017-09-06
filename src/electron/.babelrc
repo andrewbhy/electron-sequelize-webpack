@@ -7,10 +7,12 @@
 
     "presets": [
         "es2015",
-        "stage-0",
-        "react"
+        "stage-0"
+        //,"react"
+ 
     ],
     "plugins": [
         "transform-runtime"
+        ,"transform-flow-strip-types"
     ]
 }

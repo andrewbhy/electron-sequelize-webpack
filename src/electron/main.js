@@ -1,7 +1,10 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
+import Sequelize from 'sequelize'
+//import IPCServer from './IPCServer'  //uglify plugin throws error when processing electron-ipc-server
 
-import  Sequelize  from 'sequelize';
+import { setupAPI } from './API'
 
+let electron = require('electron')
 
 const path = require('path')
 const url = require('url')
@@ -19,7 +22,9 @@ let createWindow = () => {
 
     })
 
-    if (process.env.DEV == 'true') {
+    if (process.env.DevServer == true || process.env['process.env.DevServer'] == true) {
+
+        console.log("using devserver")
         mainWindow.loadURL('http://localhost:3000');
         mainWindow.webContents.openDevTools();
 
@@ -45,32 +50,10 @@ let createWindow = () => {
 
 let initialize = () => {
 
-    testDatabaseConnection();
+    setupAPI();
 
     createWindow();
 
-}
-
-let testDatabaseConnection = () => {
-
- 
-    let serverDB = new Sequelize({
-
-        dialect: 'mssql',
-        dialectModulePath: 'sequelize-msnodesqlv8',
-
-        dialectOptions: {
-            connectionString: 'Driver={SQL Server Native Client 11.0};Server=server;Database=dbname;Trusted_Connection=yes;'
-        }
-
-    });
-
-    let sql = "select top 10 * from table1"
-    serverDB.query(sql, { type: Sequelize.QueryTypes.SELECT } ).then(function (result) {
-        
-        console.dir(result)
-
-    })
 }
 
 

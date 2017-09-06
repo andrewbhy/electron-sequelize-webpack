@@ -1,4 +1,4 @@
-// flow-typed signature: f6bcfe0b80347e3659ee61f069b4a7f9
+// flow-typed signature: e7bc80d5c4d45d673d7cf67b41cdf20b
 // flow-typed version: <<STUB>>/react-hammerjs_v^0.5.0/flow_v0.50.0
 
 /**
@@ -30,6 +30,10 @@ declare module 'react-hammerjs/dist/react-hammerjs.min' {
   declare module.exports: any;
 }
 
+declare module 'react-hammerjs/gulpfile' {
+  declare module.exports: any;
+}
+
 declare module 'react-hammerjs/src/Hammer' {
   declare module.exports: any;
 }
@@ -40,6 +44,9 @@ declare module 'react-hammerjs/dist/react-hammerjs.js' {
 }
 declare module 'react-hammerjs/dist/react-hammerjs.min.js' {
   declare module.exports: $Exports<'react-hammerjs/dist/react-hammerjs.min'>;
+}
+declare module 'react-hammerjs/gulpfile.js' {
+  declare module.exports: $Exports<'react-hammerjs/gulpfile'>;
 }
 declare module 'react-hammerjs/src/Hammer.js' {
   declare module.exports: $Exports<'react-hammerjs/src/Hammer'>;

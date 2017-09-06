@@ -1,4 +1,4 @@
-// flow-typed signature: 1734396925c241e2143b6abe29384bba
+// flow-typed signature: dce4448362719d5fd258288c2e31878b
 // flow-typed version: <<STUB>>/flow_v^0.2.3/flow_v0.50.0
 
 /**
@@ -22,6 +22,22 @@ declare module 'flow' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
+declare module 'flow/examples/keystore' {
+  declare module.exports: any;
+}
+
+declare module 'flow/examples/multi' {
+  declare module.exports: any;
+}
+
+declare module 'flow/examples/serialForEach' {
+  declare module.exports: any;
+}
+
+declare module 'flow/examples/simple' {
+  declare module.exports: any;
+}
+
 declare module 'flow/flow' {
   declare module.exports: any;
 }
@@ -31,6 +47,18 @@ declare module 'flow/tests' {
 }
 
 // Filename aliases
+declare module 'flow/examples/keystore.js' {
+  declare module.exports: $Exports<'flow/examples/keystore'>;
+}
+declare module 'flow/examples/multi.js' {
+  declare module.exports: $Exports<'flow/examples/multi'>;
+}
+declare module 'flow/examples/serialForEach.js' {
+  declare module.exports: $Exports<'flow/examples/serialForEach'>;
+}
+declare module 'flow/examples/simple.js' {
+  declare module.exports: $Exports<'flow/examples/simple'>;
+}
 declare module 'flow/flow.js' {
   declare module.exports: $Exports<'flow/flow'>;
 }

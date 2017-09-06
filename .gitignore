@@ -3,11 +3,15 @@
 # dependencies
 node_modules
 
+# flow
+flow-typed
+
 # testing
 coverage
 
 # production
 build
+dist
 
 # misc
 .DS_Store

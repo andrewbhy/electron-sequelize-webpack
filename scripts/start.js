@@ -43,6 +43,8 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
 
+
+
 // We attempt to use the default port but if it is busy, we offer the user to
 // run on a different port. `detect()` Promise resolves to the next free port.
 choosePort(HOST, DEFAULT_PORT)
@@ -65,6 +67,8 @@ choosePort(HOST, DEFAULT_PORT)
       urls.lanUrlForConfig
     );
     const devServer = new WebpackDevServer(compiler, serverConfig);
+    console.log('DevServer running at :' + port)
+
     // Launch WebpackDevServer.
     devServer.listen(port, HOST, err => {
       if (err) {

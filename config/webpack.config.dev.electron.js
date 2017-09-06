@@ -3,7 +3,7 @@ var paths = require('./paths')
 var webpack = require('webpack')
 var ExternalsPlugin = require('webpack2-externals-plugin');
 var FlowtypePlugin = require('flowtype-loader/plugin');
-var env = require('./env/production.json')
+var env = require('./env/development.json')
 
 
 

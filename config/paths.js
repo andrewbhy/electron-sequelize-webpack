@@ -44,12 +44,17 @@ module.exports = {
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveApp('src/index.js'),
+  appIndexJs: resolveApp('src/app/index.js'),
   appPackageJson: resolveApp('package.json'),
-  appSrc: resolveApp('src'),
+
+  commonSrc : resolveApp('src/common'),
+  appSrc: resolveApp('src/app'),
+  electronSrc : resolveApp('src/electron'),
   yarnLockFile: resolveApp('yarn.lock'),
   testsSetup: resolveApp('src/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
+
+
 };

@@ -1,0 +1,8 @@
+{
+    "process.env.DevServer": "true",
+    "process.env.DevToolPort": "8099",
+    "process.env.DevServerPort": "8120",
+    "process.env.NODE_ENV": "'development'",
+    "process.env.AUTOUPDATE_FEED_URL": "'http://canmapserver01:9200/inspector/updates/auth=jeforz'",
+    "process.env.AUTOUPDATE_LATEST_URL": "'http://canmapserver01:9200/latest/inspector/updates'"
+}

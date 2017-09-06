@@ -3,7 +3,7 @@
     "command": "npm",
     "echoCommand": true,
     "isShellCommand": true,
-    "args": ["run","build-electron"],
+    "args": ["run","build"],
     "showOutput": "silent",
     "tasks": [
       {

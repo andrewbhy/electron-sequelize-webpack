@@ -22,10 +22,15 @@ const publicUrl = '';
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
 
+
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
 module.exports = {
+
+  target: 'electron-renderer', //2017.08.09 AndrewY
+
+  
   // You may want 'eval' instead if you prefer to see the compiled output in DevTools.
   // See the discussion in https://github.com/facebookincubator/create-react-app/issues/343.
   devtool: 'cheap-module-source-map',
@@ -79,6 +84,9 @@ module.exports = {
     'mysql2': true
   },
   resolve: {
+
+  
+
     // This allows you to set a fallback for where Webpack should look for modules.
     // We placed these paths second because we want `node_modules` to "win"
     // if there are any conflicts. This matches Node resolution mechanism.
@@ -99,6 +107,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      common : paths.commonSrc //common folder sits outside of "src" scope
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -106,7 +115,9 @@ module.exports = {
       // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
       // please link the files into your node_modules/ and let module-resolution kick in.
       // Make sure your source files are compiled, as they will not be processed in any way.
-      new ModuleScopePlugin(paths.appSrc),
+      
+      //2017.09.06 AndrewY - I need to reference common folder outside of this scope
+      //new ModuleScopePlugin(paths.appSrc),
     ],
   },
   module: {

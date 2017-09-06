@@ -1,0 +1,6 @@
+{
+    "process.env.NODE_ENV": "'production'",
+    "process.env.PRODUCTION_CONFIG1": "'Some Production Config Value'",
+    "process.env.AUTOUPDATE_FEED_URL": "'http://canmapserver01:9200/inspector/updates/auth=jeforz'",
+    "process.env.AUTOUPDATE_LATEST_URL": "'http://canmapserver01:9200/latest/inspector/updates'"
+}

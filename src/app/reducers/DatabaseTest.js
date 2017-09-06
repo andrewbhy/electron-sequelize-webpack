@@ -1,13 +1,12 @@
 
 import ActionTypes from 'common/ActionTypes'
 
-
 export default(state = {}, action) => {
     switch (action.type) {
-        case ActionTypes.GET_SAMPLEDATA :
+        case ActionTypes.GET_SAMPLEDATA:
        
             return Object.assign({}, state, {
-                SampleData : action.result
+               SampleData: action.result
             })
    
         default:

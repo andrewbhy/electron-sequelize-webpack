@@ -1,15 +1,36 @@
 {
   "name": "electron-sequelize-webpack",
+  "author": {
+    "name": "andrew yoo"
+  },
+  "description": "sample app",
   "version": "0.1.0",
   "private": true,
+  "build": {
+    "appId": "canmap.electron.react.boilerplate",
+    "win": {
+      "target": "squirrel"
+    },
+    "squirrelWindows": {
+      "iconUrl": "https://www.iconfinder.com/icons/126573/download/ico"
+    },
+    "directories": {
+      "output": "dist",
+      "buildResources": "resource"
+    }
+  },
   "devDependencies": {
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "concurrently": "^3.5.0",
     "cross-env": "^5.0.5",
     "electron": "^1.6.11",
+    "electron-builder": "^19.27.2",
+    "electron-builder-squirrel-windows": "^19.25.0",
     "flow": "^0.2.3",
     "flow-bin": "^0.50.0",
+    "flowtype-loader": "^0.2.2",
     "rimraf": "^2.6.1",
     "webpack-target-electron-renderer": "^0.4.0"
   },
@@ -53,6 +74,7 @@
     "react-router-dom": "^4.1.1",
     "react-router-redux": "next",
     "redux": "^3.6.0",
+    "redux-electron-ipc": "^1.1.10",
     "redux-thunk": "^2.2.0",
     "sanitize.css": "^5.0.0",
     "sequelize": "^4.7.5",
@@ -68,20 +90,26 @@
     "webpack2-externals-plugin": "^1.0.0",
     "whatwg-fetch": "2.0.3"
   },
-  "main": "src/electron/main.js",
+  "main": "build/main.js",
   "scripts": {
+    "debug": "concurrently \"yarn run dev-app\" \"yarn run build-electron-dev\"",
     "dev-app": "node scripts/start.js",
-    "dev-electron": "electron -r babel-register .",
-    "dev": "cross-env DEV=true NODE_ENV=development concurrently \"yarn run dev-app\" \"yarn run dev-electron\"",
+    "dev-electron-babel-register": "cross-env DEV=true electron -r babel-register .",
+    "dev-electron": "npm run build-electron-dev && electron .",
+    "dev": "npm run clean && concurrently \"yarn run dev-app\" \"yarn run dev-electron\"",
     "clean-modules": "rimraf node_modules",
     "clean": "rimraf build",
     "start": "yarn run clean & yarn run build & yarn run build-electron & electron build\\main-electron.js",
     "start-debug": "yarn run build-electron & electron build\\main-electron.js",
-    "build": "node scripts/build.js",
+    "dist": "npm run build && build --win",
+    "build": "npm run build-app & npm run build-electron",
+    "build-app": "node scripts/build.js",
     "build-electron": "webpack --config config\\webpack.config.prod.electron.js",
+    "build-electron-dev": "webpack --config config\\webpack.config.dev.electron.js",
+    "build-native": "npm run build-msnodesqlv8",
     "build-msnodesqlv8": ".\\scripts\\build-msnodesql.bat x64",
-    "test": "node scripts/test.js --env=jsdom",
-    "postinstall": "npm run build-msnodesqlv8"
+    "postinstall": "flow-typed install",
+    "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -113,11 +141,6 @@
       "json",
       "web.jsx",
       "jsx"
-    ]
-  },
-  "babel": {
-    "presets": [
-      "react-app"
     ]
   },
   "eslintConfig": {
